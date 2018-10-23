@@ -1,0 +1,30 @@
+{
+  "name": "liri-app",
+  "version": "1.0.0",
+  "description": "liri node app",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/usaches/liri-app.git"
+  },
+  "keywords": [
+    "liri",
+    "node"
+  ],
+  "author": "uday sachdeva",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/usaches/liri-app/issues"
+  },
+  "homepage": "https://github.com/usaches/liri-app#readme",
+  "dependencies": {
+    "dotenv": "^6.1.0",
+    "json-viewer": "^2.1.0",
+    "moment": "^2.22.2",
+    "node-spotify-api": "^1.0.7",
+    "request": "^2.88.0"
+  }
+}
