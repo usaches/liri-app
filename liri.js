@@ -10,12 +10,13 @@ moment().format();
 
 function liriBot() {
     if (typed[2] === "concert-this") {
+        var searchFor = "The Flaming Lips";
         for (var i = 3; i < typed.length; i++) {
             if (i > 3 && i < typed.length) {
-               var searchFor = searchFor + "+" + typed[i];
+               searchFor = searchFor + "+" + typed[i];
             }
             else {
-               var searchFor = typed[i];
+               searchFor = typed[i];
             }
         }
         var queryUrl = "https://rest.bandsintown.com/artists/" + searchFor + "/events?app_id=codingbootcamp";
@@ -39,31 +40,48 @@ function liriBot() {
         });
     }
     else if (typed[2] === "spotify-this-song") {
+        var searchFor = "the Sign";
         for (var i = 3; i < typed.length; i++) {
             if (i > 3 && i < typed.length) {
-                var searchFor = searchFor + "+" + typed[i];
+                 searchFor = searchFor + "+" + typed[i];
             }
             else {
-                var searchFor = typed[i];
+                searchFor = typed[i];
             }
         }
-        spotify
-            .search({ type: 'track', query: searchFor })
-            .then(function(response) {
-                console.log(JSON.parse(response));
-            })
-            .catch(function(err) {
-                console.log(err);
-            });
+        spotify.search({ type: 'track', query: searchFor, limit: 20 }, function (err, data) {
+            if (err) {
+                return console.log('Error occurred: ' + err);
+            }
+            // console.log(data.tracks.items[7]);
+            console.log("----------");
+            console.log(data.tracks.items[7].album.artists[0].name);
+            console.log(data.tracks.items[7].name);
+            console.log(data.tracks.items[7].preview_url);
+            console.log(data.tracks.items[7].album.name);
+            console.log("----------");
+            console.log(data.tracks.items[0].album.artists[0].name);
+            console.log(data.tracks.items[0].name);
+            console.log(data.tracks.items[0].preview_url);
+            console.log(data.tracks.items[0].album.name);
+            console.log("----------");
+            console.log(data.tracks.items[1].album.artists[0].name);
+            console.log(data.tracks.items[1].name);
+            console.log(data.tracks.items[1].preview_url);
+            console.log(data.tracks.items[1].album.name);
+            console.log("----------");
+
+        });
 
     }
     else if (typed[2] === "movie-this") {
+        var searchFor = "Mr. Nobody";
         for (var i = 3; i < typed.length; i++) {
             if (i > 3 && i < typed.length) {
-                var searchFor = searchFor + "+" + typed[i];
+                searchFor = searchFor + "+" + typed[i];
             }
             else {
-                var searchFor = typed[i];
+                searchFor = typed[i];
             }
         }
         var queryUrl = "http://www.omdbapi.com/?t=" + searchFor + "&y=&plot=short&apikey=trilogy";
